@@ -1,0 +1,20 @@
+package com.pecuniaPay.registrationLogin.services;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.pecuniaPay.registrationLogin.entities.CustomerWallet;
+import com.pecuniaPay.registrationLogin.repositories.WalletRepository;
+
+public class WalletServiceImpl implements WalletService {
+
+	@Autowired
+	private WalletRepository walletRepo;
+	
+	@Override
+	public Optional<CustomerWallet> getWalletById(Long id) {
+		return walletRepo.findById(id);
+	}
+
+}

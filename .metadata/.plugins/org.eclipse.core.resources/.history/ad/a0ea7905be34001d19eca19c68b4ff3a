@@ -1,0 +1,28 @@
+package com.pecuniaPay.registrationLogin.services;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.pecuniaPay.registrationLogin.entities.Registration;
+import com.pecuniaPay.registrationLogin.exceptions.RegistrationClassNotFound;
+import com.pecuniaPay.registrationLogin.repositories.RegistrationRepository;
+
+@Service
+public class RegistrationServiceImpl implements RegistrationService {
+
+	@Autowired
+	private RegistrationRepository registrationRepo;
+	
+	@Override
+	public Registration saveNewUser(Registration userDetails) {
+		return registrationRepo.save(userDetails);
+	}
+
+	@Override
+	public Optional<Registration> getUserDetailsById(Long id) throws RegistrationClassNotFound {
+		return registrationRepo.findById(id);
+	}
+
+}

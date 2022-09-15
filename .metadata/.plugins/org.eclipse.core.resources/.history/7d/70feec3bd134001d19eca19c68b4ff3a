@@ -1,0 +1,6 @@
+package com.pecuniaPay.UserServices.valueObjects;
+
+public class WalletAndBankVO {
+	private BankAccount bankAccount;
+	private Cu
+}

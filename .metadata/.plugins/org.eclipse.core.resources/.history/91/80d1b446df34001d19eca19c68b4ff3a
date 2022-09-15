@@ -1,0 +1,6 @@
+package com.pecuniaPay.UserServices.controllers;
+
+public class WalletController {
+
+	
+}

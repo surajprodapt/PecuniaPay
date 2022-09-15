@@ -1,0 +1,5 @@
+package com.pecuniaPay.UserServices.valueObjects;
+
+public class WallentAndBankVO {
+
+}

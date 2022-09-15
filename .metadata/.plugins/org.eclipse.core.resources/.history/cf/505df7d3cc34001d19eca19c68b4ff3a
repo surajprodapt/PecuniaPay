@@ -1,0 +1,38 @@
+package com.pecuniaPay.registrationLogin.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class CustomerWallet {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long walletId;
+	private Long walletBalance;
+	public CustomerWallet(Long walletId, Long walletBalance) {
+		super();
+		this.walletId = walletId;
+		this.walletBalance = walletBalance;
+	}
+	public CustomerWallet() {
+		super();
+	}
+	public Long getWalletId() {
+		return walletId;
+	}
+	public void setWalletId(Long walletId) {
+		this.walletId = walletId;
+	}
+	public Long getWalletBalance() {
+		return walletBalance;
+	}
+	public void setWalletBalance(Long walletBalance) {
+		this.walletBalance = walletBalance;
+	}
+	@Override
+	public String toString() {
+		return "CustomerWallet [walletId=" + walletId + ", walletBalance=" + walletBalance + "]";
+	}
+}

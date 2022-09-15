@@ -1,0 +1,19 @@
+package com.pecuniaPay.UserServices.services;
+
+import com.pecuniaPay.UserServices.entities.BankAccount;
+
+public class BankAccountServiceImpl implements BankAccountService {
+
+	@Override
+	public BankAccount addBankAccount(BankAccount bankAccount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BankAccount deleteBankAccountById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

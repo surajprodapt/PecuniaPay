@@ -1,0 +1,39 @@
+package com.pecuniaPay.UserServices.services;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.pecuniaPay.UserServices.entities.BankAccount;
+import com.pecuniaPay.UserServices.repositories.BankAccountRepository;
+import com.pecuniaPay.UserServices.valueObjects.CustomerWallet;
+import com.pecuniaPay.UserServices.valueObjects.WalletAndBankVO;
+@Service
+public class BankAccountServiceImpl implements BankAccountService {
+	
+	@Autowired
+	private BankAccountRepository baRepo;
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@Override
+	public BankAccount addBankAccount(BankAccount bankAccount) {
+		return baRepo.save(bankAccount);
+	}
+
+	@Override
+	public void deleteBankAccountByAccountNumber(Long accountNumber) {
+		baRepo.deleteById(accountNumber);
+	}
+	
+	public WalletAndBankVO linkWalletAndBank(Long accountNumber)
+	{
+		WalletAndBankVO vo = new WalletAndBankVO();
+		Optional<BankAccount> bankaccount = baRepo.findById(accountNumber);
+		CustomerWallet customerWallet = restTemplate.getForObject(null, CustomerWallet.class)
+	}
+	
+}

@@ -1,0 +1,34 @@
+package com.pecuniaPay.UserServices.valueObjects;
+
+import com.pecuniaPay.UserServices.entities.BankAccount;
+
+public class WalletAndBankVO {
+	private BankAccount bankAccount;
+	private CustomerWallet customerWallet;
+	public WalletAndBankVO(BankAccount bankAccount, CustomerWallet customerWallet) {
+		super();
+		this.bankAccount = bankAccount;
+		this.customerWallet = customerWallet;
+	}
+	public WalletAndBankVO() {
+		super();
+	}
+	public BankAccount getBankAccount() {
+		return bankAccount;
+	}
+	public void setBankAccount(BankAccount bankAccount) {
+		this.bankAccount = bankAccount;
+	}
+	public CustomerWallet getCustomerWallet() {
+		return customerWallet;
+	}
+	public void setCustomerWallet(CustomerWallet customerWallet) {
+		this.customerWallet = customerWallet;
+	}
+	@Override
+	public String toString() {
+		return "WalletAndBankVO [bankAccount=" + bankAccount + ", customerWallet=" + customerWallet + "]";
+	}
+	
+	
+}

@@ -1,0 +1,5 @@
+package com.pecuniaPay.registrationLogin.services;
+
+public interface WalletService {
+
+}

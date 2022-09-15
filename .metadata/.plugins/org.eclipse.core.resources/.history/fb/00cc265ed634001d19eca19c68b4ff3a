@@ -1,0 +1,13 @@
+package com.pecuniaPay.registrationLogin.services;
+
+import com.pecuniaPay.registrationLogin.entities.CustomerWallet;
+
+public class WalletServiceImpl implements WalletService {
+
+	@Override
+	public CustomerWallet getWalletById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

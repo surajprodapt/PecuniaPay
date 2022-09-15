@@ -1,0 +1,9 @@
+package com.pecuniaPay.UserServices.services;
+
+
+
+public interface BankAccountService {
+	
+	public add
+	
+}

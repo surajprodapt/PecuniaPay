@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+D:\pecuniaPay\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+1503766999.index
+3757172817.index
