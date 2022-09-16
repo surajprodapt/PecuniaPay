@@ -1,7 +1,0 @@
-package com.pecuniaPay.registrationLogin.services;
-
-import com.pecuniaPay.registrationLogin.entities.CustomerWallet;
-
-public interface WalletService {
-	public Optional<CustomerWallet> getWalletById(Long id);
-}

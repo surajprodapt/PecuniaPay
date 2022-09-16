@@ -16,20 +16,20 @@ import com.pecuniaPay.walletServices.valueObjects.WalletBankAccountVO;
 public class CustomerWalletServiceImpl implements CustomerWalletService {
 	
 	@Autowired
-	private CustomerWalletRepository cwr;
+	private CustomerWalletRepository customerWalletRepo;
 	
 	private BankAccountRepository bankAccRepo;
 
 	@Override
 	public CustomerWallet generateNewWallet(CustomerWallet cw) {
 		cw.setWalletBalance(0l);
-		return cwr.save(cw);
+		return customerWalletRepo.save(cw);
 	}
 
 	@Override
 	public void addBankAccounttoWallet(WalletBankAccountVO vo) {
 //		System.out.println(vo);
-		CustomerWallet cw = cwr.findById(vo.getWalletId()).get();
+		CustomerWallet cw = customerWalletRepo.findById(vo.getWalletId()).get();
 //		BankAccount ba = new BankAccount();
 //		ba.setIfscCode(vo.getIfscCode());
 //		ba.setBankBalance(vo.getBankBalance());
@@ -38,7 +38,7 @@ public class CustomerWalletServiceImpl implements CustomerWalletService {
 //		bankAccounts.add(ba);
 //		cw.setLinkedBanks(bankAccounts);
 //		System.out.println(cw);
-//		cwr.save(cw);
+//		customerWalletRepo.save(cw);
 //		System.out.println(cw);
 		
 		BankAccount ba = new BankAccount();
@@ -51,7 +51,7 @@ public class CustomerWalletServiceImpl implements CustomerWalletService {
 
 //	@Override
 //	public CustomerWallet addBankAccounttoWallet(CustomerWallet customerWallet,BankAccount bankAccount) {
-//		CustomerWallet cw = cwr.findById(customerWallet.getWalletId()).get();
+//		CustomerWallet cw = customerWalletRepo.findById(customerWallet.getWalletId()).get();
 //		if(Objects.nonNull(customerWallet.getWalletBalance()))
 //		{
 //			cw.setWalletBalance(customerWallet.getWalletBalance());
@@ -62,7 +62,7 @@ public class CustomerWalletServiceImpl implements CustomerWalletService {
 //			bankAccounts.add(bankAccount);
 //			cw.setLinkedBanks(bankAccounts);
 //		}
-//		return cwr.save(cw);
+//		return customerWalletRepo.save(cw);
 //	}
 
 }

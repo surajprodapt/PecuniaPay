@@ -1,7 +1,0 @@
-package com.pecuniaPay.registrationLogin.repositories;
-
-import org.springframework.data.repository.CrudRepository;
-
-public interface RegistrationRepository extends CrudRepository<Registration, Long> {
-
-}

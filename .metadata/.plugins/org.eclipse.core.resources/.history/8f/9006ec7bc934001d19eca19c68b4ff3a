@@ -1,5 +1,0 @@
-package com.pecuniaPay.UserServices.entities;
-
-public class BankAccount {
-
-}

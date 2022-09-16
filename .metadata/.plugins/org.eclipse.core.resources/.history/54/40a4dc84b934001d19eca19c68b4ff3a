@@ -1,5 +1,0 @@
-package com.pecuniaPay.registrationLogin.services;
-
-public interface RegistrationService {
-
-}

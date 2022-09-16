@@ -9,16 +9,16 @@ import com.pecuniaPay.walletServices.repositories.BankAccountRepository;
 public class BankAccountServiceImpl implements BankAccountService {
 	
 	@Autowired
-	private BankAccountRepository baRepo;
+	private BankAccountRepository bankAccountRepo;
 	
 	@Override
 	public BankAccount addBankAccount(BankAccount bankAccount) {
-		return baRepo.save(bankAccount);
+		return bankAccountRepo.save(bankAccount);
 	}
 
 	@Override
 	public void deleteBankAccountByAccountNumber(Long accountNumber) {
-		baRepo.deleteById(accountNumber);
+		bankAccountRepo.deleteById(accountNumber);
 	}
 	
 	
