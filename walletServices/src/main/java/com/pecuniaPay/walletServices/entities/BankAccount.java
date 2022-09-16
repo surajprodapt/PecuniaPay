@@ -44,17 +44,16 @@ public class BankAccount {
 	public void setBankBalance(Long bankBalance) {
 		this.bankBalance = bankBalance;
 	}
-	public CustomerWallet getWalletId() {
+	public CustomerWallet getWallet() {
 		return wallet;
 	}
-	public void setWalletId(CustomerWallet walletId) {
-		this.wallet = walletId;
+	public void setWallet(CustomerWallet wallet) {
+		this.wallet = wallet;
 	}
 	@Override
 	public String toString() {
 		return "BankAccount [accountNumber=" + accountNumber + ", ifscCode=" + ifscCode + ", bankBalance=" + bankBalance
-				+ ", wallet=" + wallet + "]";
+				+ "]";
 	}
-	
 	
 }
