@@ -1,11 +1,9 @@
 package com.pecuniaPay.registrationLogin.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Registration {
@@ -18,10 +16,8 @@ public class Registration {
 	private String emailId;
 	private Long mobileNumber;
 	private String password;
-	@OneToOne(cascade = CascadeType.ALL)
-	private Customer customer;
 	public Registration(Long userId, String userName, String firstName, String lastName, String emailId,
-			Long mobileNumber, String password, Customer customer) {
+			Long mobileNumber, String password) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -30,7 +26,6 @@ public class Registration {
 		this.emailId = emailId;
 		this.mobileNumber = mobileNumber;
 		this.password = password;
-		this.customer = customer;
 	}
 	public Registration() {
 		super();
@@ -77,17 +72,11 @@ public class Registration {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
 	@Override
 	public String toString() {
 		return "Registration [userId=" + userId + ", userName=" + userName + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", emailId=" + emailId + ", mobileNumber=" + mobileNumber + ", password=" + password
-				+ ", customer=" + customer + "]";
+				+ lastName + ", emailId=" + emailId + ", mobileNumber=" + mobileNumber + ", password=" + password + "]";
 	}
+	
 	
 }

@@ -9,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import com.pecuniaPay.registrationLogin.entities.Customer;
 import com.pecuniaPay.registrationLogin.entities.Registration;
 import com.pecuniaPay.registrationLogin.exceptions.RegistrationClassNotFound;
+import com.pecuniaPay.registrationLogin.repositories.CustomerRepository;
 import com.pecuniaPay.registrationLogin.repositories.RegistrationRepository;
 import com.pecuniaPay.registrationLogin.valueObjects.CustomerWallet;
 
@@ -19,21 +20,20 @@ public class RegistrationServiceImpl implements RegistrationService {
 	private RegistrationRepository registrationRepo;
 	
 	@Autowired
+	private CustomerRepository customerRepo;
+	
+	@Autowired
 	private RestTemplate restTemplate;
 	
 	@Override
-	public Registration saveNewUser(Registration userDetails) {
+	public Customer saveNewUser(Registration userDetails) {
 		//userDetails.setWalletBalance(0);
-		CustomerWallet cw = restTemplate.getForObject("http://localhost:8084/generatenewwallet", CustomerWallet.class);
+		CustomerWallet customerWallet = restTemplate.getForObject("http://localhost:8060/wallet/wallet/generatenewwallet", CustomerWallet.class);
 		Customer cust = new Customer();
-		cust.setFirstName(userDetails.getFirstName());
-		cust.setLastName(userDetails.getLastName());
-		cust.setMobileNumber(userDetails.getMobileNumber());
-		cust.setEmail(userDetails.getEmailId());
+		cust.setUserDetails(userDetails);
 //		cust.setWalletId(null);
-		cust.setWalletId(cw.getWalletId());
-		userDetails.setCustomer(cust);
-		return registrationRepo.save(userDetails);
+		cust.setWalletId(customerWallet.getWalletId());
+		return customerRepo.save(cust);
 	}
 
 	@Override

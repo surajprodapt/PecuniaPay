@@ -27,7 +27,7 @@ public class RegistrationController {
 	private CustomerService customerService;
 	
 	@PostMapping("/newuser")
-	public Registration saveNewUser(@RequestBody Registration userDetails)
+	public Customer saveNewUser(@RequestBody Registration userDetails)
 	{
 		return registrationService.saveNewUser(userDetails);
 	}

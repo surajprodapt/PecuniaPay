@@ -1,5 +1,0 @@
-package com.pecuniaPay.registrationLogin.exceptions;
-
-public class RegistrationClassNotFound {
-
-}

@@ -1,5 +1,0 @@
-package com.pecuniaPay.registrationLogin.repositories;
-
-public interface WalletRepository {
-
-}
