@@ -18,51 +18,58 @@ public class CustomerWalletServiceImpl implements CustomerWalletService {
 	@Autowired
 	private CustomerWalletRepository customerWalletRepo;
 	
+	@Autowired
 	private BankAccountRepository bankAccRepo;
 
 	@Override
-	public CustomerWallet generateNewWallet(CustomerWallet cw) {
-		cw.setWalletBalance(0l);
-		return customerWalletRepo.save(cw);
+	public CustomerWallet generateNewWallet(CustomerWallet customerWallet) {
+		customerWallet.setWalletBalance(0l);
+		return customerWalletRepo.save(customerWallet);
 	}
 
 	@Override
-	public void addBankAccounttoWallet(WalletBankAccountVO vo) {
-//		System.out.println(vo);
-		CustomerWallet cw = customerWalletRepo.findById(vo.getWalletId()).get();
-//		BankAccount ba = new BankAccount();
-//		ba.setIfscCode(vo.getIfscCode());
-//		ba.setBankBalance(vo.getBankBalance());
-//		ba.setWallet(cw);
-//		Set<BankAccount> bankAccounts = new HashSet<BankAccount>();
-//		bankAccounts.add(ba);
-//		cw.setLinkedBanks(bankAccounts);
-//		System.out.println(cw);
-//		customerWalletRepo.save(cw);
-//		System.out.println(cw);
+	public CustomerWallet addBankAccounttoWallet(WalletBankAccountVO vo) {
+		System.out.println(vo);
+		CustomerWallet customerWallet = customerWalletRepo.findById(vo.getWalletId()).get();
+		BankAccount bankAccount = new BankAccount();
+		bankAccount.setIfscCode(vo.getIfscCode());
+		bankAccount.setBankBalance(vo.getBankBalance());
+		bankAccount.setWallet(customerWallet);
+		Set<BankAccount> bankAccounts = new HashSet<BankAccount>();
+		bankAccounts.add(bankAccount);
+		customerWallet.setLinkedBanks(bankAccounts);
+		customerWallet.setWalletBalance(0l);
+		System.out.println(customerWallet);
 		
-		BankAccount ba = new BankAccount();
-		ba.setWallet(cw);
-		ba.setIfscCode(vo.getIfscCode());
-		ba.setBankBalance(vo.getBankBalance());
-		bankAccRepo.save(ba);
-		System.out.println(ba);
+		BankAccount bankAccount1 = new BankAccount();
+		bankAccount1.setIfscCode(vo.getIfscCode());
+		bankAccount1.setBankBalance(vo.getBankBalance());
+		bankAccount1.setWallet(customerWallet);
+		bankAccRepo.save(bankAccount);
+		
+		return customerWalletRepo.save(customerWallet);
+//		CustomerWallet customerWallet = customerWalletRepo.findById(vo.getWalletId()).get();
+//		BankAccount bankAccount = new BankAccount();
+//		bankAccount.setIfscCode(vo.getIfscCode());
+//		bankAccount.setBankBalance(vo.getBankBalance());
+//		bankAccount.setWallet(customerWallet);
+//		return bankAccRepo.save(bankAccount);
 	}
 
 //	@Override
-//	public CustomerWallet addBankAccounttoWallet(CustomerWallet customerWallet,BankAccount bankAccount) {
-//		CustomerWallet cw = customerWalletRepo.findById(customerWallet.getWalletId()).get();
-//		if(Objects.nonNull(customerWallet.getWalletBalance()))
+//	public CustomerWallet addbankAccountnkAccounttoWallet(CustomerWallet customerWallet,bankAccountnkAccount bankAccountnkAccount) {
+//		CustomerWallet customerWallet = customerWalletRepo.findById(customerWallet.getWalletId()).get();
+//		if(Objects.nonNull(customerWallet.getWalletbankAccountlance()))
 //		{
-//			cw.setWalletBalance(customerWallet.getWalletBalance());
+//			customerWallet.setWalletbankAccountlance(customerWallet.getWalletbankAccountlance());
 //		}
-//		if(Objects.nonNull(customerWallet.getLinkedBanks()))
+//		if(Objects.nonNull(customerWallet.getLinkedbankAccountnks()))
 //		{
-//			Set<BankAccount> bankAccounts = new HashSet<BankAccount>();
-//			bankAccounts.add(bankAccount);
-//			cw.setLinkedBanks(bankAccounts);
+//			Set<bankAccountnkAccount> bankAccountnkAccounts = new HashSet<bankAccountnkAccount>();
+//			bankAccountnkAccounts.add(bankAccountnkAccount);
+//			customerWallet.setLinkedbankAccountnks(bankAccountnkAccounts);
 //		}
-//		return customerWalletRepo.save(cw);
+//		return customerWalletRepo.save(customerWallet);
 //	}
 
 }

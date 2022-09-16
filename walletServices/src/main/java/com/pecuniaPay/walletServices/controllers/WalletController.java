@@ -3,6 +3,7 @@ package com.pecuniaPay.walletServices.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,18 +15,18 @@ import com.pecuniaPay.walletServices.valueObjects.WalletBankAccountVO;
 public class WalletController {
 	
 	@Autowired
-	private CustomerWalletService cws;
+	private CustomerWalletService customerWalletService;
 	
 	@GetMapping("/generatenewwallet")
 	public CustomerWallet generateNewWallet(CustomerWallet cw)
 	{
-		return cws.generateNewWallet(cw);
+		return customerWalletService.generateNewWallet(cw);
 	}
 	
 	@PostMapping("/addbankaccount")
-	public void addBankAccounttoWallet(WalletBankAccountVO vo)
+	public CustomerWallet addBankAccounttoWallet(@RequestBody WalletBankAccountVO vo)
 	{
-		cws.addBankAccounttoWallet(vo);
+		return customerWalletService.addBankAccounttoWallet(vo);
 	}
 //	@PostMapping("/addbankaccount")
 //	public BankAccount addBankAccounttoWallet(@RequestBody BankAccount bankAccount)
