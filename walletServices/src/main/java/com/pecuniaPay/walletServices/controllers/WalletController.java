@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pecuniaPay.walletServices.entities.BankAccount;
 import com.pecuniaPay.walletServices.entities.CustomerWallet;
+import com.pecuniaPay.walletServices.services.BankAccountService;
 import com.pecuniaPay.walletServices.services.CustomerWalletService;
 import com.pecuniaPay.walletServices.valueObjects.WalletBankAccountVO;
 @RestController
@@ -17,17 +19,21 @@ public class WalletController {
 	@Autowired
 	private CustomerWalletService customerWalletService;
 	
+	@Autowired
+	private BankAccountService bankAccountService;
+	
 	@GetMapping("/generatenewwallet")
-	public CustomerWallet generateNewWallet(CustomerWallet cw)
+	public CustomerWallet generateNewWallet(CustomerWallet customerWallet)
 	{
-		return customerWalletService.generateNewWallet(cw);
+		return customerWalletService.generateNewWallet(customerWallet);
 	}
 	
 	@PostMapping("/addbankaccount")
-	public CustomerWallet addBankAccounttoWallet(@RequestBody WalletBankAccountVO vo)
+	public WalletBankAccountVO addBankAccount(@RequestBody WalletBankAccountVO valueObject)
 	{
-		return customerWalletService.addBankAccounttoWallet(vo);
+		return bankAccountService.addBankAccount(valueObject);
 	}
+	
 //	@PostMapping("/addbankaccount")
 //	public BankAccount addBankAccounttoWallet(@RequestBody BankAccount bankAccount)
 //	{

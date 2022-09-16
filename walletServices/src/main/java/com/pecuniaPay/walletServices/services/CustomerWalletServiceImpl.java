@@ -27,49 +27,4 @@ public class CustomerWalletServiceImpl implements CustomerWalletService {
 		return customerWalletRepo.save(customerWallet);
 	}
 
-	@Override
-	public CustomerWallet addBankAccounttoWallet(WalletBankAccountVO vo) {
-		System.out.println(vo);
-		CustomerWallet customerWallet = customerWalletRepo.findById(vo.getWalletId()).get();
-		BankAccount bankAccount = new BankAccount();
-		bankAccount.setIfscCode(vo.getIfscCode());
-		bankAccount.setBankBalance(vo.getBankBalance());
-		bankAccount.setWallet(customerWallet);
-		Set<BankAccount> bankAccounts = new HashSet<BankAccount>();
-		bankAccounts.add(bankAccount);
-		customerWallet.setLinkedBanks(bankAccounts);
-		customerWallet.setWalletBalance(0l);
-		System.out.println(customerWallet);
-		
-		BankAccount bankAccount1 = new BankAccount();
-		bankAccount1.setIfscCode(vo.getIfscCode());
-		bankAccount1.setBankBalance(vo.getBankBalance());
-		bankAccount1.setWallet(customerWallet);
-		bankAccRepo.save(bankAccount);
-		
-		return customerWalletRepo.save(customerWallet);
-//		CustomerWallet customerWallet = customerWalletRepo.findById(vo.getWalletId()).get();
-//		BankAccount bankAccount = new BankAccount();
-//		bankAccount.setIfscCode(vo.getIfscCode());
-//		bankAccount.setBankBalance(vo.getBankBalance());
-//		bankAccount.setWallet(customerWallet);
-//		return bankAccRepo.save(bankAccount);
-	}
-
-//	@Override
-//	public CustomerWallet addbankAccountnkAccounttoWallet(CustomerWallet customerWallet,bankAccountnkAccount bankAccountnkAccount) {
-//		CustomerWallet customerWallet = customerWalletRepo.findById(customerWallet.getWalletId()).get();
-//		if(Objects.nonNull(customerWallet.getWalletbankAccountlance()))
-//		{
-//			customerWallet.setWalletbankAccountlance(customerWallet.getWalletbankAccountlance());
-//		}
-//		if(Objects.nonNull(customerWallet.getLinkedbankAccountnks()))
-//		{
-//			Set<bankAccountnkAccount> bankAccountnkAccounts = new HashSet<bankAccountnkAccount>();
-//			bankAccountnkAccounts.add(bankAccountnkAccount);
-//			customerWallet.setLinkedbankAccountnks(bankAccountnkAccounts);
-//		}
-//		return customerWalletRepo.save(customerWallet);
-//	}
-
 }
