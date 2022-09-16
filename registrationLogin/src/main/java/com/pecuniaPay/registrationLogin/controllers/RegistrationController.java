@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pecuniaPay.registrationLogin.entities.Customer;
 import com.pecuniaPay.registrationLogin.entities.Registration;
 import com.pecuniaPay.registrationLogin.exceptions.RegistrationClassNotFound;
+import com.pecuniaPay.registrationLogin.services.CustomerService;
 import com.pecuniaPay.registrationLogin.services.RegistrationService;
 
 @RestController
@@ -20,6 +22,9 @@ public class RegistrationController {
 	
 	@Autowired
 	private RegistrationService registrationService;
+	
+	@Autowired
+	private CustomerService customerService;
 	
 	@PostMapping("/newuser")
 	public Registration saveNewUser(@RequestBody Registration userDetails)
@@ -33,4 +38,9 @@ public class RegistrationController {
 		return registrationService.getUserDetailsById(id);
 	}
 	
+	@GetMapping("/getcustomer/{id}")
+	public Optional<Customer> getCustomerDetailsById(@PathVariable ("id") Long id)
+	{
+		return customerService.getCustomerDetailsById(id);
+	}
 }
