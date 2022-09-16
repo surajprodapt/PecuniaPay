@@ -1,0 +1,39 @@
+server:
+  port: 8060
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8061/eureka/
+
+logging:
+  pattern: 
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+              
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: login-service
+        uri: lb://login-service
+        predicates:
+        - Path=/login/**
+        filters:
+        - RewritePath=/login/(?<path>.*), /$\{path}
+      - id: wallet-service
+        uri: lb://wallet-service
+        predicates:
+        - Path=/wallet/**
+        filters:
+        - RewritePath=/wallet/(?<path>.*), /$\{path}
+      
+springdoc:
+  swagger-ui:
+    urls:
+      - name: login
+        url: /v3/api-docs/login
+      - name: wallet
+        url: /v3/api-docs/wallet
