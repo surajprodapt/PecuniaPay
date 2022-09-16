@@ -28,23 +28,16 @@ public class WalletController {
 		return customerWalletService.generateNewWallet(customerWallet);
 	}
 	
+	//will make a method to get wallet id by customer id by adding customerId in value object
+	//and then getting the wallet id by rest template using the url -: localhost:8060/login/users/getwalletid/{id}
+	//Service impl will look like
+	//Long walletid = restTemplate.getForObject("localhost:8060/login/users/getwalletid/"+valueObject.getCustomerId(), Long.class);
+	//valueObject.setWalletId(walletid);
+	
 	@PostMapping("/addbankaccount")
 	public WalletBankAccountVO addBankAccount(@RequestBody WalletBankAccountVO valueObject)
 	{
 		return bankAccountService.addBankAccount(valueObject);
 	}
 	
-//	@PostMapping("/addbankaccount")
-//	public BankAccount addBankAccounttoWallet(@RequestBody BankAccount bankAccount)
-//	{
-//		return cws.addBankAccounttoWallet(bankAccount);
-//	}
-//	@PostMapping("/addbankaccount")
-//	public CustomerWallet addBankAccounttoWallet(@RequestBody CustomerWallet customerWallet,@RequestBody BankAccount bankAccount)
-//	{
-//		Set<BankAccount> bankAccounts = customerWallet.getLinkedBanks();
-//		bankAccounts.add(bankAccount);
-//		customerWallet.setLinkedBanks(bankAccounts);
-//		return cws.addBankAccounttoWallet(customerWallet,bankAccount);
-//	}
 }
