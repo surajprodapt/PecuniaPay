@@ -38,6 +38,8 @@ public class RegistrationController {
 		return registrationService.getUserDetailsById(id);
 	}
 	
+	
+	
 	@GetMapping("/getcustomer/{id}")
 	public Optional<Customer> getCustomerDetailsById(@PathVariable ("id") Long id)
 	{
