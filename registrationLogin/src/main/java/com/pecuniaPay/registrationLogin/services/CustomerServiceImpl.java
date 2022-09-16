@@ -19,4 +19,10 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerRepository.findById(id);
 	}
 
+	@Override
+	public Long getWalletIdByCustomerId(Long id) {
+		Customer customer = customerRepository.findById(id).get();
+		return customer.getWalletId();
+	}
+
 }

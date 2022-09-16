@@ -17,7 +17,7 @@ import com.pecuniaPay.registrationLogin.services.CustomerService;
 import com.pecuniaPay.registrationLogin.services.RegistrationService;
 
 @RestController
-@RequestMapping("/registeruser")
+@RequestMapping("/users")
 public class RegistrationController {
 	
 	@Autowired
@@ -39,6 +39,12 @@ public class RegistrationController {
 	}
 	
 	
+	
+	@GetMapping("getwalletid/{id}")
+	public Long getWalletIdByCustomerId(@PathVariable ("id") Long id)
+	{
+		return customerService.getWalletIdByCustomerId(id);
+	}
 	
 	@GetMapping("/getcustomer/{id}")
 	public Optional<Customer> getCustomerDetailsById(@PathVariable ("id") Long id)

@@ -6,4 +6,6 @@ import com.pecuniaPay.registrationLogin.entities.Customer;
 
 public interface CustomerService {
 	public Optional<Customer> getCustomerDetailsById(Long id);
+
+	public Long getWalletIdByCustomerId(Long id);
 }
