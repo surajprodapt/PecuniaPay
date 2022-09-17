@@ -1,7 +1,10 @@
 package com.pecuniaPay.walletServices.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +14,7 @@ import com.pecuniaPay.walletServices.entities.BankAccount;
 import com.pecuniaPay.walletServices.entities.CustomerWallet;
 import com.pecuniaPay.walletServices.services.BankAccountService;
 import com.pecuniaPay.walletServices.services.CustomerWalletService;
+import com.pecuniaPay.walletServices.valueObjects.BankAccountsVO;
 import com.pecuniaPay.walletServices.valueObjects.WalletBankAccountVO;
 @RestController
 @RequestMapping("/wallet")
@@ -40,4 +44,15 @@ public class WalletController {
 		return bankAccountService.addBankAccount(valueObject);
 	}
 	
+	@GetMapping("/getlinkedbankaccounts/{id}")
+	public List<BankAccountsVO> getLinkedBankAccounts(@PathVariable ("id") Long walletId)
+	{
+		return bankAccountService.getLinkedBankAccounts(walletId);
+	}
+	
+	@GetMapping("/getwalletbalance/{id}")
+	public Long getWalletBalance(@PathVariable ("id") Long walletId)
+	{
+		return customerWalletService.getWalletBalance(walletId);
+	}
 }
