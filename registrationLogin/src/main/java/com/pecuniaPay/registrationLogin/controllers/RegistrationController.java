@@ -38,8 +38,6 @@ public class RegistrationController {
 		return registrationService.getUserDetailsById(id);
 	}
 	
-	
-	
 	@GetMapping("getwalletid/{id}")
 	public Long getWalletIdByCustomerId(@PathVariable ("id") Long id)
 	{

@@ -16,14 +16,16 @@ public class Transaction {
 	private Long amount;
 	private String description;
 	private Long walletId;
+	private Long recieverWalletId;
 	public Transaction(Long transactionId, LocalDateTime transactionDateTime, Long amount, String description,
-			Long walletId) {
+			Long walletId, Long recieverWalletId) {
 		super();
 		this.transactionId = transactionId;
 		this.transactionDateTime = transactionDateTime;
 		this.amount = amount;
 		this.description = description;
 		this.walletId = walletId;
+		this.recieverWalletId = recieverWalletId;
 	}
 	public Transaction() {
 		super();
@@ -58,10 +60,18 @@ public class Transaction {
 	public void setWalletId(Long walletId) {
 		this.walletId = walletId;
 	}
+	public Long getRecieverWalletId() {
+		return recieverWalletId;
+	}
+	public void setSendersWalletId(Long recieverWalletId) {
+		this.recieverWalletId = recieverWalletId;
+	}
 	@Override
 	public String toString() {
 		return "Transaction [transactionId=" + transactionId + ", transactionDateTime=" + transactionDateTime
-				+ ", amount=" + amount + ", description=" + description + ", walletId=" + walletId + "]";
+				+ ", amount=" + amount + ", description=" + description + ", walletId=" + walletId
+				+ ", recieverWalletId=" + recieverWalletId + "]";
 	}
+	
 	
 }

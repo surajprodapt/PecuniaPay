@@ -27,4 +27,10 @@ public class CustomerWalletServiceImpl implements CustomerWalletService {
 		return customerWalletRepo.save(customerWallet);
 	}
 
+	@Override
+	public Long getWalletBalance(Long walletId) {
+		CustomerWallet customerWallet = customerWalletRepo.findById(walletId).get();
+		return customerWallet.getWalletBalance();
+	}
+
 }
