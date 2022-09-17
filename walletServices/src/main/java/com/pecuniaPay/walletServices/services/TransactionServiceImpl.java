@@ -12,10 +12,13 @@ import com.pecuniaPay.walletServices.repositories.CustomerWalletRepository;
 import com.pecuniaPay.walletServices.repositories.TransactionRepository;
 @Service
 public class TransactionServiceImpl implements TransactionService {
+	
 	@Autowired
 	private CustomerWalletRepository customerWalletRepository;
+	
 	@Autowired
 	private TransactionRepository transactionrepository;
+	
 	@Override
 	public Transaction saveTransaction(Transaction transaction) {
 		transaction.setTransactionDateTime(LocalDateTime.now());
@@ -27,10 +30,9 @@ public class TransactionServiceImpl implements TransactionService {
 		customerWalletRepository.save(recieversCustomerWallet);
 		return transactionrepository.save(transaction);
 	}
+	
 	@Override
 	public List<Transaction> getAllTransactions(Long walletId) {
-		
 		return transactionrepository.findByWalletIdOrRecieverWalletId(walletId,walletId);
 	}
-
 }
