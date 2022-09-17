@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pecuniaPay.walletServices.entities.Transaction;
+import com.pecuniaPay.walletServices.services.BankAccountService;
 import com.pecuniaPay.walletServices.services.TransactionService;
+import com.pecuniaPay.walletServices.valueObjects.BankToWalletVO;
 
 @RestController
 @RequestMapping("/transaction")
@@ -20,6 +22,9 @@ public class TransactionController {
 	@Autowired
 	private TransactionService transactionService;
 	
+	@Autowired
+	private BankAccountService bankAccountService;
+	
 	@PostMapping("/sendmoney")
 	public Transaction sendMoneyfromWallet(@RequestBody Transaction transaction)
 	{
@@ -27,11 +32,11 @@ public class TransactionController {
 	}
 	
 	//send money will act as recieve money for the beneficiary account
-	@GetMapping("/recievemoney")
-	public void recievetMoneyinWallet()
-	{
-		
-	}
+//	@GetMapping("/recievemoney")
+//	public void recievetMoneyinWallet()
+//	{
+//		
+//	}
 	
 	@GetMapping("/getalltransactions/{id}")
 	public List<Transaction> getAllTransactions(@PathVariable ("id") Long walletId)
@@ -39,9 +44,9 @@ public class TransactionController {
 		return transactionService.getAllTransactions(walletId);
 	}
 	
-	@GetMapping("/addmoney")
-	public void addMoneytoWallet()
+	@PostMapping("/addmoney")
+	public BankToWalletVO addMoneytoWallet(@RequestBody BankToWalletVO bankToWalletVO)
 	{
-		
+		return bankAccountService.addMoneyToWallet(bankToWalletVO);
 	}
 }

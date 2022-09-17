@@ -11,6 +11,7 @@ import com.pecuniaPay.walletServices.entities.CustomerWallet;
 import com.pecuniaPay.walletServices.repositories.BankAccountRepository;
 import com.pecuniaPay.walletServices.repositories.CustomerWalletRepository;
 import com.pecuniaPay.walletServices.valueObjects.BankAccountsVO;
+import com.pecuniaPay.walletServices.valueObjects.BankToWalletVO;
 import com.pecuniaPay.walletServices.valueObjects.WalletBankAccountVO;
 @Service
 public class BankAccountServiceImpl implements BankAccountService {
@@ -25,7 +26,7 @@ public class BankAccountServiceImpl implements BankAccountService {
 	public WalletBankAccountVO addBankAccount(WalletBankAccountVO valueObject) {
 		CustomerWallet customerWallet = customerWalletRepository.findById(valueObject.getWalletId()).get();
 		BankAccount bankAccount = new BankAccount();
-		bankAccount.setBankBalance(valueObject.getBankBalance());
+		bankAccount.setBankBalance(5000l);
 		bankAccount.setIfscCode(valueObject.getIfscCode());
 		bankAccount.setWallet(customerWallet);
 		bankAccountRepo.save(bankAccount);
@@ -52,6 +53,24 @@ public class BankAccountServiceImpl implements BankAccountService {
 			linkedBankAccounts.add(bankAccountVo);
 		}
 		return linkedBankAccounts;
+	}
+
+	@Override
+	public BankToWalletVO addMoneyToWallet(BankToWalletVO bankToWalletVO) {
+		BankAccount bankAccount = bankAccountRepo.findById(bankToWalletVO.getAccountNumber()).get();
+		if(bankAccount.getBankBalance()<bankToWalletVO.getAmount())
+		{
+			System.out.println("Not sufficient Bank Balance");
+		}
+		else
+		{
+			CustomerWallet customerWallet = customerWalletRepository.findById(bankToWalletVO.getWalletId()).get();
+			bankAccount.setBankBalance(bankAccount.getBankBalance()-bankToWalletVO.getAmount());
+			customerWallet.setWalletBalance(customerWallet.getWalletBalance()+bankToWalletVO.getAmount());
+			bankAccountRepo.save(bankAccount);
+			customerWalletRepository.save(customerWallet);
+		}
+		return bankToWalletVO;
 	}
 	
 	
