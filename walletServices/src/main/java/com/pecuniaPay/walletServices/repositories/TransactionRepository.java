@@ -12,5 +12,5 @@ import com.pecuniaPay.walletServices.entities.Transaction;
 public interface TransactionRepository extends CrudRepository<Transaction, Long> {
 	//List<Transaction> findByWallet_WalletId(Long walletId);
 
-	List<Transaction> findByWalletId(Long walletId);
+	List<Transaction> findByWalletIdOrRecieverWalletId(Long walletId,Long recieverWalletId);
 }

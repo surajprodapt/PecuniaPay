@@ -29,7 +29,8 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 	@Override
 	public List<Transaction> getAllTransactions(Long walletId) {
-		return transactionrepository.findByWalletId(walletId);
+		
+		return transactionrepository.findByWalletIdOrRecieverWalletId(walletId,walletId);
 	}
 
 }
