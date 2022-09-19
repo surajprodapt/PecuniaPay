@@ -15,7 +15,7 @@ import com.pecuniaPay.registrationLogin.entities.Registration;
 import com.pecuniaPay.registrationLogin.exceptions.RegistrationClassNotFound;
 import com.pecuniaPay.registrationLogin.services.CustomerService;
 import com.pecuniaPay.registrationLogin.services.RegistrationService;
-
+//http://localhost:8060/login
 @RestController
 @RequestMapping("/users")
 public class RegistrationController {
