@@ -16,6 +16,7 @@ import com.pecuniaPay.walletServices.services.BankAccountService;
 import com.pecuniaPay.walletServices.services.CustomerWalletService;
 import com.pecuniaPay.walletServices.valueObjects.BankAccountsVO;
 import com.pecuniaPay.walletServices.valueObjects.WalletBankAccountVO;
+//http://localhost:8060/wallet
 @RestController
 @RequestMapping("/wallet")
 public class WalletController {

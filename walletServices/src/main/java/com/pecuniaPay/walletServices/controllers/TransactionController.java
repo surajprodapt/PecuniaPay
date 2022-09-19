@@ -14,7 +14,7 @@ import com.pecuniaPay.walletServices.entities.Transaction;
 import com.pecuniaPay.walletServices.services.BankAccountService;
 import com.pecuniaPay.walletServices.services.TransactionService;
 import com.pecuniaPay.walletServices.valueObjects.BankToWalletVO;
-
+//http://localhost:8060/wallet
 @RestController
 @RequestMapping("/transaction")
 public class TransactionController {
@@ -31,7 +31,7 @@ public class TransactionController {
 		return transactionService.saveTransaction(transaction);
 	}
 	
-	//send money will act as recieve money for the beneficiary account
+//	send money will act as recieve money for the beneficiary account
 //	@GetMapping("/recievemoney")
 //	public void recievetMoneyinWallet()
 //	{
