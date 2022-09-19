@@ -13,7 +13,7 @@ export class ResigtrationComponent implements OnInit {
   ngOnInit(): void {
   }
   gerUserData(data :any){
-
+    console.warn(data)
 this.userdata.saveuser(data).subscribe((result)=>{
   console.warn(result)
 })
