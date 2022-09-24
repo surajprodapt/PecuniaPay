@@ -10,10 +10,17 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/pecuniapay
     username: root
-    password: admin
+    password: password
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
+
+# App Properties
+#pecuniaPay:
+ # app:
+  #jwtSecret: pecuniaPaySecretKey
+  #jwtExpirationMs: 86400000    
+    
