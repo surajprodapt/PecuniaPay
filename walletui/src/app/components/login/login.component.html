@@ -1,31 +1,46 @@
-<form #loginform="ngForm" (ngSubmit)="gerloginData(loginform.value)">
-    <!-- Email input -->
-    <div class="form-outline mb-4">
-      <input type="username" id="username" class="form-control" />
-      <label class="form-label" for="username">UserName</label>
-    </div>
-  
-    <!-- Password input -->
-    <div class="form-outline mb-4">
-      <input type="password" id="form2Example2" class="form-control" />
-      <label class="form-label" for="form2Example2">Password</label>
-    </div>
-  
-    <!-- 2 column grid layout for inline styling -->
-    <div class="row mb-4">
-      <div class="col d-flex justify-content-center">
-        <!-- Checkbox -->
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-          <label class="form-check-label" for="form2Example31"> Remember me </label>
+<div class="a">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+
+    <div class="container">
+
+
+        <div class="row">
+            <aside class="col-sm-4">
+
+                <div class="card">
+                    <article class="card-body">
+                        <a href="http://localhost:4200/register" class="float-right btn btn-outline-primary">Sign up</a>
+                        <h4 class="card-title mb-4 mt-1">Sign in</h4>
+                        <form >
+                            <div class="form-group">
+                                <label>Your email</label>
+                                <input name="" class="form-control" placeholder="Email" type="email">
+                            </div> <!-- form-group// -->
+                            <div class="form-group">
+                                <a class="float-right" href="#">Forgot?</a>
+                                <label>Your password</label>
+                                <input class="form-control" placeholder="**" type="password">
+                            </div> <!-- form-group// -->
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label> <input type="checkbox"> Save password </label>
+                                </div> <!-- checkbox .// -->
+                            </div> <!-- form-group// -->
+                            <div class="form-group">
+                                
+                                    <button type="submit" class="btn btn-primary btn-block" routerLink="/userpage">
+                                        Login 
+                                    </button>
+                               
+                            </div> <!-- form-group// -->
+                        </form>
+                    </article>
+                </div>
+            </aside>
         </div>
-      </div>
-  
-      <div class="col">
-        <!-- Simple link -->
-        <a href="#!">Forgot password?</a>
-      </div>
-    </div>
-  
-    <!-- Submit button -->
-    <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
