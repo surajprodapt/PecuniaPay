@@ -1,0 +1,29 @@
+#header {
+    transition: all 0.5s;
+    
+    padding: 15px 0;
+    background: rgba(40, 58, 90, 0.9);
+    display: inline-flex;
+    
+    
+  }
+
+
+  #navbar{
+    padding: 1px 150px;}
+  
+
+  #navbar ul li{
+    display: inline-block;
+    padding: 10px 5px;
+    
+  }
+  .container1{
+    
+    display: flex;
+    width: 1500px;
+    justify-content: space-between;
+    margin: 0px auto;
+    
+    
+}

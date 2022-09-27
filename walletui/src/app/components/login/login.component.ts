@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistrationServiceService } from 'src/app/registration-service.service';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +7,9 @@ import { RegistrationServiceService } from 'src/app/registration-service.service
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userlogin:RegistrationServiceService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
-  gerloginData(data :any){
 
-    this.userlogin.savelogin(data).subscribe((result)=>{
-      console.warn(result)
-    })
-      }
 }

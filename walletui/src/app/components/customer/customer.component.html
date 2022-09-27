@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>all data</title>
+</head>
+
+<body>
+    <table  class="table table-striped">
+        <thead>
+            <tr>
+                <th>CustomerId</th>
+                <th>username</th>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>emailId</th>
+                <th>mobileNumber</th>
+                <th>password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  >
+                <td>{{Customer.userId}}</td>
+                <td>{{Customer.userName}}</td>
+                <td>{{Customer.firstName}}</td>
+                <td>{{Customer.lastName}}</td>
+                <td>{{Customer.emailId}}</td>
+                <td>{{Customer.mobileNumber}}</td>
+                <td>{{Customer.password}}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    <ng-container *ngFor="let item of Customer |async"><td>{{item.userName}}</td></ng-container>
+
+
+</body>
+
+</html>
