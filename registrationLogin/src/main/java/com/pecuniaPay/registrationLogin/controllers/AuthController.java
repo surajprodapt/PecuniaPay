@@ -19,10 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import com.pecuniaPay.registrationLogin.entities.Customer;
 import com.pecuniaPay.registrationLogin.entities.ERole;
 import com.pecuniaPay.registrationLogin.entities.Role;
 import com.pecuniaPay.registrationLogin.entities.User;
+import com.pecuniaPay.registrationLogin.repositories.CustomerRepository;
 import com.pecuniaPay.registrationLogin.repositories.RoleRepository;
 import com.pecuniaPay.registrationLogin.repositories.UserRepository;
 import com.pecuniaPay.registrationLogin.security.jwt.JwtUtils;
@@ -31,6 +34,7 @@ import com.pecuniaPay.registrationLogin.security.payload.request.SignupRequest;
 import com.pecuniaPay.registrationLogin.security.payload.response.JwtResponse;
 import com.pecuniaPay.registrationLogin.security.payload.response.MessageResponse;
 import com.pecuniaPay.registrationLogin.services.UserDetailsImpl;
+import com.pecuniaPay.registrationLogin.valueObjects.CustomerWallet;
 //http://localhost:8060/login/api/auth/signup
 //http://localhost:8060/login/api/auth/signin
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -51,6 +55,12 @@ public class AuthController {
 
   @Autowired
   JwtUtils jwtUtils;
+  
+  @Autowired
+	private CustomerRepository customerRepo;
+  
+  @Autowired
+  private RestTemplate restTemplate;
 
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -123,6 +133,12 @@ public class AuthController {
     }
 
     user.setRoles(roles);
+    CustomerWallet customerWallet = restTemplate.getForObject("http://localhost:8060/wallet/wallet/generatenewwallet", CustomerWallet.class);
+	Customer cust = new Customer();
+	cust.setUserDetails(user);
+//	cust.setWalletId(null);
+	cust.setWalletId(customerWallet.getWalletId());
+	customerRepo.save(cust);
     userRepository.save(user);
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));

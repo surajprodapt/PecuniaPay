@@ -26,11 +26,11 @@ public class RegistrationController {
 	@Autowired
 	private CustomerService customerService;
 	
-	@PostMapping("/newuser")
-	public Customer saveNewUser(@RequestBody Registration userDetails)
-	{
-		return registrationService.saveNewUser(userDetails);
-	}
+//	@PostMapping("/newuser")
+//	public Customer saveNewUser(@RequestBody Registration userDetails)
+//	{
+//		return registrationService.saveNewUser(userDetails);
+//	}
 	
 	@GetMapping("/getuser/{id}")
 	public Optional<Registration> getUserDetailsById(@PathVariable ("id") Long id) throws RegistrationClassNotFound

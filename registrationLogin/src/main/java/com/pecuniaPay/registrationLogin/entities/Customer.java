@@ -13,9 +13,9 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long custId;
 	@OneToOne(cascade = CascadeType.ALL)
-	private Registration userDetails;
+	private User userDetails;
 	private Long walletId;
-	public Customer(Long custId, Registration userDetails, Long walletId) {
+	public Customer(Long custId, User userDetails, Long walletId) {
 		super();
 		this.custId = custId;
 		this.userDetails = userDetails;
@@ -30,10 +30,10 @@ public class Customer {
 	public void setCustId(Long custId) {
 		this.custId = custId;
 	}
-	public Registration getUserDetails() {
+	public User getUserDetails() {
 		return userDetails;
 	}
-	public void setUserDetails(Registration userDetails) {
+	public void setUserDetails(User userDetails) {
 		this.userDetails = userDetails;
 	}
 	public Long getWalletId() {
