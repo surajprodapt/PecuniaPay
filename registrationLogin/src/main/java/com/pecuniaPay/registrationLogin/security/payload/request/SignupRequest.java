@@ -14,11 +14,20 @@ public class SignupRequest {
   @Email
   private String email;
 
-  private Set<String> role;
+//  private Set<String> role;
 
   @NotBlank
   @Size(min = 6, max = 40)
   private String password;
+  
+  @NotBlank
+  private String firstName;
+  
+  @NotBlank
+  private String lastName;
+  
+  @NotBlank
+  private String mobileNumber;
 
   public String getUsername() {
     return username;
@@ -44,11 +53,37 @@ public class SignupRequest {
     this.password = password;
   }
 
-  public Set<String> getRole() {
-    return this.role;
+  public String getFirstName() {
+	return firstName;
   }
 
-  public void setRole(Set<String> role) {
-    this.role = role;
+  public void setFirstName(String firstName) {
+	this.firstName = firstName;
   }
+
+  public String getLastName() {
+	return lastName;
+  }
+
+  public void setLastName(String lastName) {
+	this.lastName = lastName;
+  }
+
+  public String getMobileNumber() {
+	return mobileNumber;
+  }
+
+  public void setMobileNumber(String mobileNumber) {
+	this.mobileNumber = mobileNumber;
+  }
+  
+  
+
+//  public Set<String> getRole() {
+//    return this.role;
+//  }
+//
+//  public void setRole(Set<String> role) {
+//    this.role = role;
+//  }
 }
