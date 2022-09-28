@@ -3,6 +3,7 @@ package com.pecuniaPay.registrationLogin.controllers;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.pecuniaPay.registrationLogin.services.CustomerService;
 import com.pecuniaPay.registrationLogin.services.RegistrationService;
 //http://localhost:8060/login
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/users")
 public class RegistrationController {
 	
